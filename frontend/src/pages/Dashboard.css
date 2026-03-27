@@ -1,0 +1,58 @@
+.dashboard {
+  padding: 30px 60px;
+}
+
+.total-card {
+  background: linear-gradient(135deg, #2563eb, #1e40af);
+  color: white;
+  padding: 25px;
+  width: 280px;
+  border-radius: 14px;
+  margin-bottom: 30px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+}
+
+.total-card h3 {
+  margin: 0;
+  font-size: 16px;
+  opacity: 0.9;
+}
+
+.total-card h2 {
+  margin-top: 10px;
+  font-size: 28px;
+}
+
+.transaction-list {
+  background: white;
+  padding: 25px;
+  border-radius: 14px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+}
+
+.transaction-list h3 {
+  margin-bottom: 20px;
+}
+
+.transaction-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.transaction-item:last-child {
+  border-bottom: none;
+}
+
+.title {
+  margin: 0;
+  font-weight: 500;
+}
+
+.category {
+  margin: 3px 0 0;
+  font-size: 13px;
+  color: #777;
+}

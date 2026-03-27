@@ -1,0 +1,36 @@
+.upload-container {
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* BOX */
+.upload-box {
+  background: white;
+  padding: 35px;
+  width: 350px;
+  border-radius: 14px;
+  text-align: center;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+}
+
+.upload-box h2 {
+  margin-bottom: 10px;
+}
+
+.upload-box p {
+  font-size: 14px;
+  color: #777;
+  margin-bottom: 20px;
+}
+
+/* FILE INPUT */
+.upload-box input[type="file"] {
+  margin-bottom: 15px;
+}
+
+/* BUTTON FULL WIDTH */
+.upload-box button {
+  width: 100%;
+}
