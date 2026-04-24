@@ -6,4 +6,4 @@ const demoTransactions = [
   { _id: 5, title: "Coffee", amount: 120, category: "Food" },
 ];
 
-export default demoTransactions; 
+export default demoTransactions

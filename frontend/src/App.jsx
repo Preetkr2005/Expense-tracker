@@ -6,6 +6,8 @@ import Dashboard from "./pages/Dashboard";
 import UploadCSV from "./pages/UploadCSV";
 import Navbar from "./Components/Navbar";
 import Transactions from "./pages/TransactionPage";
+import TransactionDetails from "./pages/TansactionDetails";
+import EditTransaction from "./pages/EditTransaction";
 
 function App() {
   return (
@@ -18,6 +20,8 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/transactions" element={<Transactions />} />
         <Route path="/upload" element={<UploadCSV />} />
+        <Route path="/edit-expense/:id" element={<EditTransaction />} />
+        <Route path="/expense/:id" element={<TransactionDetails />} />
       </Routes>
     </>
   );

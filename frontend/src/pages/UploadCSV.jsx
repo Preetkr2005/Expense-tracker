@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./UploadCSV.css"
 
 export default function UploadCSV() {
-  const [file, setFile] = useState(null);
+  const [setFile] = useState(null);
 
   const handleUpload = async () => {
     alert("Uploaded");

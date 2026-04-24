@@ -1,0 +1,62 @@
+.edit-page {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f9fafb;
+  padding: 20px;
+}
+
+.edit-box {
+  width: 100%;
+  max-width: 520px;
+}
+
+.edit-box h1 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #111827;
+  font-size: 34px;
+  font-weight: 700;
+}
+
+.edit-page form {
+  background: white;
+  padding: 35px;
+  border-radius: 18px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.edit-page input {
+  width: 100%;
+  padding: 16px 18px;
+  margin-bottom: 20px;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  font-size: 16px;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.edit-page input:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+.edit-page button {
+  width: 100%;
+  border: none;
+  padding: 16px;
+  border-radius: 12px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  color: white;
+  background: linear-gradient(135deg, #2563eb, #1e40af);
+  transition: 0.3s ease;
+}
+
+.edit-page button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(37, 99, 235, 0.22);
+}

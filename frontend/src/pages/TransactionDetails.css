@@ -1,0 +1,65 @@
+/* ExpenseDetails.css */
+
+.details-container {
+  padding: 30px 60px;
+}
+
+.details-container h1 {
+  margin-bottom: 25px;
+  color: #111827;
+  font-size: 28px;
+}
+
+.card {
+  background: white;
+  padding: 30px;
+  border-radius: 14px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  margin-bottom: 25px;
+}
+
+.card p {
+  margin: 14px 0;
+  font-size: 16px;
+  color: #374151;
+}
+
+.card strong {
+  color: #111827;
+  margin-right: 8px;
+}
+
+.buttons {
+  display: flex;
+  gap: 15px;
+}
+
+.buttons button {
+  border: none;
+  padding: 12px 22px;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.edit-btn {
+  background: linear-gradient(135deg, #2563eb, #1e40af);
+  color: white;
+}
+
+.edit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(37, 99, 235, 0.25);
+}
+
+.delete-btn {
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  color: white;
+}
+
+.delete-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(239, 68, 68, 0.25);
+}
