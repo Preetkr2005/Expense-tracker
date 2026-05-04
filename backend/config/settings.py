@@ -12,11 +12,11 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 
 from pathlib import Path
 
-from dotenv import load_dotenv
-import os
+# from dotenv import load_dotenv
+# import os
 
-load_dotenv()
-db_pass = os.getenv('db_pass')
+# load_dotenv()
+# db_pass = os.getenv('db_pass')
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -92,7 +92,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'expense_db',
         'USER': 'expense_user',
-        'PASSWORD': db_pass,
+        'PASSWORD': '1234',
         'HOST': 'localhost',
         'PORT': '5432',
     }

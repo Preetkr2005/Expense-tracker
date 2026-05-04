@@ -123,8 +123,6 @@ class ExpenseViewSet(viewsets.ModelViewSet):
         except Exception as e:
             return Response({"error": str(e)}, status=400)
 
-    #  ADMIN ONLY DELETE
-    def destroy(self, request, *args, **kwargs):
-        if request.user.role != 'admin':
-            return Response({"error": "Only admin can delete"}, status=403)
-        return super().destroy(request, *args, **kwargs)
+    #  USER A DELETE OWN DATA
+def destroy(self, request, *args, **kwargs):
+    return super().destroy(request, *args, **kwargs)
