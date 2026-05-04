@@ -1,5 +1,15 @@
 .dashboard {
   padding: 30px 60px;
+  background: #f8fafc;
+  min-height: 100vh;
+}
+
+.top-section {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
 }
 
 .total-card {
@@ -8,7 +18,6 @@
   padding: 25px;
   width: 280px;
   border-radius: 14px;
-  margin-bottom: 30px;
   box-shadow: 0 6px 16px rgba(0,0,0,0.1);
 }
 
@@ -21,6 +30,28 @@
 .total-card h2 {
   margin-top: 10px;
   font-size: 28px;
+}
+
+.month-filter {
+  background: white;
+  padding: 20px;
+  border-radius: 14px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+}
+
+.month-filter label {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 8px;
+  color: #555;
+  font-weight: 500;
+}
+
+.month-filter input {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 14px;
 }
 
 .transaction-list {
@@ -48,11 +79,44 @@
 
 .title {
   margin: 0;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .category {
-  margin: 3px 0 0;
+  margin: 3px 0;
   font-size: 13px;
   color: #777;
+}
+
+.date {
+  margin: 0;
+  font-size: 12px;
+  color: #999;
+}
+
+.right-side {
+  text-align: right;
+}
+
+.right-side h4 {
+  margin: 0 0 10px;
+}
+
+.view-btn {
+  background: #2563eb;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.view-btn:hover {
+  background: #1e40af;
+}
+
+.no-data {
+  color: #777;
+  text-align: center;
+  padding: 20px 0;
 }

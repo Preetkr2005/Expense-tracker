@@ -8,6 +8,7 @@ import Navbar from "./Components/Navbar";
 import Transactions from "./pages/TransactionPage";
 import TransactionDetails from "./pages/TansactionDetails";
 import EditTransaction from "./pages/EditTransaction";
+import PrivateRoute from "./pages/PrivateRoute";
 
 function App() {
   return (
@@ -17,9 +18,18 @@ function App() {
       <Routes>
         <Route path="/" element={<LoginPage />} />
         <Route path="/signup" element={<SignupPage />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/transactions" element={<Transactions />} />
-        <Route path="/upload" element={<UploadCSV />} />
+        <Route path="/dashboard" element=
+        {<PrivateRoute>
+          <Dashboard />
+          </PrivateRoute>} />
+        <Route path="/transactions" element={
+          <PrivateRoute>
+          <Transactions />
+          </PrivateRoute>} />
+        <Route path="/upload" element={
+          <PrivateRoute>
+          <UploadCSV />
+          </PrivateRoute>} />
         <Route path="/edit-expense/:id" element={<EditTransaction />} />
         <Route path="/expense/:id" element={<TransactionDetails />} />
       </Routes>
