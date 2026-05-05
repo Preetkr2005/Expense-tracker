@@ -11,3 +11,6 @@ class User(AbstractUser):
     )
     role = models.CharField(max_length=10, choices=ROLE_CHOICES, default='user')
     is_verified = models.BooleanField(default=False)
+
+    otp = models.CharField(max_length=6, blank=True, null=True)
+    otp_created_at = models.DateTimeField(null=True, blank=True)

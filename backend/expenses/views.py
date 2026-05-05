@@ -14,21 +14,21 @@ from .models import Expense
 from .serializers import ExpenseSerializer
 from accounts.permissions import IsAdmin
 
+from ml.utils import predict_category
+
 
 class ExpenseViewSet(viewsets.ModelViewSet):
     queryset = Expense.objects.all()
     serializer_class = ExpenseSerializer
     permission_classes = [permissions.IsAuthenticated]
 
-    #  FILTER + ROLE BASED
+    # FILTER + ROLE BASED
     def get_queryset(self):
         queryset = Expense.objects.all()
 
-        # role-based
         if self.request.user.role != 'admin':
             queryset = queryset.filter(user=self.request.user)
 
-        # filters
         category = self.request.query_params.get('category')
         date = self.request.query_params.get('date')
 
@@ -40,17 +40,30 @@ class ExpenseViewSet(viewsets.ModelViewSet):
 
         return queryset
 
-    #  CREATE
+    # CREATE (ML integrated here)
     def perform_create(self, serializer):
-        serializer.save(user=self.request.user)
+        title = self.request.data.get("title")
+        category = self.request.data.get("category")
 
-    #  TOTAL
+        # Predict category if empty
+        if not category or category.strip() == "":
+            if title:
+                category = predict_category(title)
+            else:
+                category = "Others"
+
+        serializer.save(
+            user=self.request.user,
+            category=category
+        )
+
+    # TOTAL
     @action(detail=False, methods=['get'])
     def total(self, request):
         total = self.get_queryset().aggregate(total=Sum('amount'))
         return Response({"total": total['total'] or 0})
 
-    #  MONTHLY CHART
+    # MONTHLY CHART
     @action(detail=False, methods=['get'])
     def monthly_chart(self, request):
         data = (
@@ -62,7 +75,7 @@ class ExpenseViewSet(viewsets.ModelViewSet):
         )
         return Response(data)
 
-    #  CATEGORY CHART
+    # CATEGORY CHART
     @action(detail=False, methods=['get'])
     def category_chart(self, request):
         data = (
@@ -73,7 +86,7 @@ class ExpenseViewSet(viewsets.ModelViewSet):
         )
         return Response(data)
 
-    #  EXPORT CSV
+    # EXPORT CSV
     @action(detail=False, methods=['get'])
     def export_csv(self, request):
         queryset = self.get_queryset()
@@ -94,7 +107,7 @@ class ExpenseViewSet(viewsets.ModelViewSet):
 
         return response
 
-    # CSV UPLOAD
+    # CSV UPLOAD (ML added here too)
     @action(detail=False, methods=['post'], parser_classes=[MultiPartParser])
     def upload_csv(self, request):
         file = request.FILES.get('file')
@@ -107,12 +120,22 @@ class ExpenseViewSet(viewsets.ModelViewSet):
 
             expenses = []
             for _, row in df.iterrows():
+                title = row.get('title')
+                category = row.get('category')
+
+                # Predict if missing
+                if not category or str(category).strip() == "":
+                    if title:
+                        category = predict_category(title)
+                    else:
+                        category = "Others"
+
                 expenses.append(
                     Expense(
                         user=request.user,
-                        title=row.get('title'),
+                        title=title,
                         amount=row.get('amount'),
-                        category=row.get('category')
+                        category=category
                     )
                 )
 
@@ -123,6 +146,6 @@ class ExpenseViewSet(viewsets.ModelViewSet):
         except Exception as e:
             return Response({"error": str(e)}, status=400)
 
-    #  USER A DELETE OWN DATA
-def destroy(self, request, *args, **kwargs):
-    return super().destroy(request, *args, **kwargs)
+    # DELETE
+    def destroy(self, request, *args, **kwargs):
+        return super().destroy(request, *args, **kwargs)
