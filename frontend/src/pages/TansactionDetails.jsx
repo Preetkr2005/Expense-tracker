@@ -74,7 +74,6 @@ export default function TransactionDetails() {
         <p><strong>Title:</strong> {expense.title}</p>
         <p><strong>Amount:</strong> ₹{expense.amount}</p>
         <p><strong>Category:</strong> {expense.category}</p>
-        <p><strong>Description:</strong> {expense.description}</p>
         <p><strong>Date:</strong> {expense.date}</p>
       </div>
 

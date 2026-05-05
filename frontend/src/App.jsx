@@ -9,6 +9,7 @@ import Transactions from "./pages/TransactionPage";
 import TransactionDetails from "./pages/TansactionDetails";
 import EditTransaction from "./pages/EditTransaction";
 import PrivateRoute from "./pages/PrivateRoute";
+import OTPPage from "./pages/OtpPage";
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
           </PrivateRoute>} />
         <Route path="/edit-expense/:id" element={<EditTransaction />} />
         <Route path="/expense/:id" element={<TransactionDetails />} />
+        <Route path="/otp" element={<OTPPage />} />
       </Routes>
     </>
   );

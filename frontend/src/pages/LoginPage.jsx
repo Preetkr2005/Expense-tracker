@@ -1,40 +1,31 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import "./LoginPage.css";
 
-export default function LoginPage({ setUser }) {
-  const [username, setEmail] = useState("");
+export default function LoginPage() {
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const navigate = useNavigate();
 
   const handleLogin = async () => {
     try {
-      const response = await fetch("http://127.0.0.1:8000/api/token/", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          username: username,
-          password: password,
-        }),
-      });
+      const res = await axios.post(
+        "http://127.0.0.1:8000/api/accounts/login/",
+        {
+          email,
+          password,
+        }
+      );
 
-      const data = await response.json();
+      alert(res.data.message);
 
-      if (response.ok) {
-        localStorage.setItem("access", data.access);
-        localStorage.setItem("refresh", data.refresh);
-        localStorage.setItem("username", username);
+      // go to OTP page
+      navigate("/otp", { state: { email } });
 
-        navigate("/dashboard");
-      } else {
-        alert("Invalid Credentials");
-      }
     } catch (error) {
-      console.log(error)
-      alert("Server Error");
+      alert(error.response?.data?.error || "Login failed");
     }
   };
 
@@ -45,17 +36,20 @@ export default function LoginPage({ setUser }) {
         <p>Login to your account</p>
 
         <input
-          placeholder="Username"
+          type="email"
+          placeholder="Enter Email"
+          value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
 
         <input
           type="password"
-          placeholder="Password"
+          placeholder="Enter Password"
+          value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
 
-        <button onClick={handleLogin}>Login</button>
+        <button onClick={handleLogin}>Send OTP</button>
       </div>
     </div>
   );
